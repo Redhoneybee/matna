@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/global.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div class="container">
+    <%- include('header'); -%>
+      <script>
+      </script>
+      <section class="about">
+        <% if(menu){ %>
+          <div class="list">
+            <ul class="grid">
+            </ul>
+          </div>
+          <script>
+            const menu = "<%= menu %>";
+            const m = menu.split(',');
+            const list = document.querySelector('.list ul');
+
+            m.forEach((e, i) => {
+              const query = `<li id = '${i}' class="kind_of_food flex">
+                              <div class = "mask flex">${e}</div>
+                              <a href = '/'>
+                                <img src="http://placehold.it/480x480"/>
+                              </a>
+                            </li>`;
+              list.innerHTML += query;
+            });
+          </script>
+          <% } %>
+      </section>
+  </div>
+</body>
+<script type="text/javascript" src="/javascripts/index.js"></script>
+
+</html>

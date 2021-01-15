@@ -1,0 +1,76 @@
+body {
+  margin : 0 auto;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.container{
+  width : 100%;
+  height : 100%;
+}
+section:nth-of-type(1){
+  margin : 0 10px;
+}
+.list{
+  width : 100%;
+}
+.kind_of_food{
+  width : 300px;
+  height : 300px;
+}
+.kind_of_food a img{
+  width : 300px;
+  height : 300px;
+}
+.kind_of_food .mask{
+  position : absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  width : inherit;
+  height : inherit;
+  pointer-events : none;
+  opacity : 0;
+  transform : scale(0.7);
+  -webkit-transform : scale(0.7);
+  transition : all 0.3s ease-out;
+  -webkit-transitin : all 0.3s ease-out;
+}
+
+.kind_of_food.visible .mask{
+  opacity: 1;
+  transform : scale(1);
+  -webkit-transform : scale(1);
+}
+
+
+@media screen and (min-width : 600px){
+  section:nth-of-type(1){
+    margin : 0 50px;
+  }
+  .grid{
+    width : 320px;
+    grid-template-columns : repeat(2, 1fr);
+  }
+  .kind_of_food{
+    width : 320px;
+    height : 320px;
+  }
+  .kind_of_food a img{
+    width : 320px;
+    height : 320px;
+  }
+}
+@media screen and (min-width : 960px){
+  section:nth-of-type(1){
+    margin : 0 180px;
+  }
+  .grid{
+    width : 360px;
+    grid-template-columns : repeat(4, 1fr);
+  }
+  .kind_of_food{
+    width : 360px;
+    height : 360px;
+  }
+  .kind_of_food a img{
+    width : 360px;
+    height : 360px;
+  }
+}
