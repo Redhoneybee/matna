@@ -1,0 +1,18 @@
+<% if(menu){%>
+    <script>
+        const index = "<%= index %>";
+        const menu = "<%= menu %>";
+        const m = menu.split(',');
+        const list = document.querySelector('.list ul');
+
+        m.forEach((e, i) => {
+            const query = `<li id = '${i}' class="kind_of_food flex">
+                      <div class = "mask flex">${e}</div>
+                      <a href = '/menu/${index[i]}'>
+                        <img src="http://placehold.it/480x480"/>
+                      </a>
+                    </li>`;
+            list.innerHTML += query;
+        });
+    </script>
+    <%}%>

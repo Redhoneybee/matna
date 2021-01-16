@@ -16,27 +16,16 @@
       <script>
       </script>
       <section class="about">
-        <% if(menu){ %>
-          <div class="list">
-            <ul class="grid">
-            </ul>
-          </div>
-          <script>
-            const menu = "<%= menu %>";
-            const m = menu.split(',');
-            const list = document.querySelector('.list ul');
+        <div class="list">
+          <ul class="grid">
+          </ul>
+        </div>
+        <% if(page=='main' ){ %>
+          <%- include('default_list'); -%>
+            <% }else if(page=='menu' ){ %>
+              <%- include('menu'); -%>
+                <% } %>
 
-            m.forEach((e, i) => {
-              const query = `<li id = '${i}' class="kind_of_food flex">
-                              <div class = "mask flex">${e}</div>
-                              <a href = '/'>
-                                <img src="http://placehold.it/480x480"/>
-                              </a>
-                            </li>`;
-              list.innerHTML += query;
-            });
-          </script>
-          <% } %>
       </section>
   </div>
 </body>

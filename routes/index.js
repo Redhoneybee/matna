@@ -2,21 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-const { Pool, Client } = require('pg');
-
 require('dotenv').config();
-
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
-});
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   try {
+    const pool = req.app.get('pool');
     const sql = `select * from kind_of_food`;
 
     pool.connect(async (err, client, done) => {
@@ -30,14 +21,17 @@ router.get('/', function (req, res, next) {
         const sql_res = result.rows;
 
         let menu = [];
-
+        let menu_index = [];
         sql_res.forEach(e => {
+          menu_index.push(e.kind_of_id);
           menu.push(e.name.trim());
         });
         client.end();
         return res.render('index',
           {
-            title: 'Express',
+            page: 'main',
+            title: 'Matna',
+            index: menu_index,
             menu: menu,
           }
         );
