@@ -1,16 +1,24 @@
 
 (function () {
-    const kof = document.querySelectorAll('li.kind_of_food');
 
-    kof.forEach(e => {
-        e.addEventListener('mouseover', (event) => {
-            event.preventDefault();
+    const imgs = document.querySelectorAll('ul.grid li');
+    let tc = 0;
+
+    imgs.forEach(e => {
+        setTimeout(() => {
             e.classList.add('visible');
-        });
-
-        e.addEventListener('mouseleave', (event) => {
+        }, tc += 100);
+    });
+    imgs.forEach(target => {
+        const mask = target.childNodes[1];
+        target.addEventListener('mouseover', (event) => {
             event.preventDefault();
-            e.classList.remove('visible');
+            mask.classList.add('visible');
+        });
+        target.addEventListener('mouseleave', (event) => {
+            event.preventDefault();
+            mask.classList.remove('visible');
         });
     });
+
 })();

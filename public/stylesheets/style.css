@@ -12,15 +12,29 @@ section:nth-of-type(1){
 .list{
   width : 100%;
 }
-.kind_of_food{
+.kind_of_food,
+.foods{
+  width : 300px;
+  height : 300px;
+  opacity : 0;
+  transform : scale(0.7);
+  -webkit-transform : scale(0.7);
+  transition : all 0.3s ease-in;
+  -webkit-transition : all 0.3s ease-in;
+}
+.kind_of_food.visible,
+.foods.visible{
+  opacity : 1;
+  transform : scale(1);
+  -webkit-transform : scale(1);
+}
+.kind_of_food a img,
+.foods a img{
   width : 300px;
   height : 300px;
 }
-.kind_of_food a img{
-  width : 300px;
-  height : 300px;
-}
-.kind_of_food .mask{
+.kind_of_food .mask,
+.foods .mask{
   position : absolute;
   background-color: rgba(0, 0, 0, 0.4);
   width : inherit;
@@ -33,7 +47,9 @@ section:nth-of-type(1){
   -webkit-transitin : all 0.3s ease-out;
 }
 
-.kind_of_food.visible .mask{
+
+.kind_of_food .mask.visible,
+.foods .mask.visible{
   opacity: 1;
   transform : scale(1);
   -webkit-transform : scale(1);
@@ -48,11 +64,13 @@ section:nth-of-type(1){
     width : 320px;
     grid-template-columns : repeat(2, 1fr);
   }
-  .kind_of_food{
+  .kind_of_food,
+  .foods{
     width : 320px;
     height : 320px;
   }
-  .kind_of_food a img{
+  .kind_of_food a img,
+  .foods a img{
     width : 320px;
     height : 320px;
   }
@@ -65,11 +83,13 @@ section:nth-of-type(1){
     width : 360px;
     grid-template-columns : repeat(4, 1fr);
   }
-  .kind_of_food{
+  .kind_of_food,
+  .foods{
     width : 360px;
     height : 360px;
   }
-  .kind_of_food a img{
+  .kind_of_food a img,
+  .foods a img{
     width : 360px;
     height : 360px;
   }
