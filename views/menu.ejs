@@ -1,21 +1,37 @@
 <% if(foods){ %>
-    <script>
-        let foods = "<%= JSON.stringify(foods) %>";
-        foods = foods.replaceAll('&#34;', '\"');
-        foods = JSON.parse(foods);
+  <script>
+    let foods = "<%= JSON.stringify(foods) %>";
+    foods = foods.replaceAll('&#34;', '\"');
+    foods = JSON.parse(foods);
 
-        const list = document.querySelector('.list ul');
+    const list = document.querySelector('.list ul');
 
-        foods.forEach((e, i) => {
-            const name = e.name;
-            const storeName = e.storeName;
-            const query = `<li id = '${i}' class="foods flex">
+    foods.forEach((e, i) => {
+      const foodId = e.foodId;
+      const name = e.name;
+      const storeName = e.storeName;
+      const query = `<li id = '${i}' class="foods flex">
                       <div class = "mask flex">${name} , ${storeName}</div>
-                      <a href = '/${name}'>
+                      <div id = ${foodId} class = "img_btn">
                         <img src="http://placehold.it/480x480"/>
-                      </a>
+                      </div>
                     </li>`;
-            list.innerHTML += query;
-        });
-    </script>
-    <% } %>
+      list.innerHTML += query;
+    });
+
+    // show food info modal
+    const imgBtns = document.querySelectorAll('.foods .img_btn');
+
+    imgBtns.forEach(imgBtn => {
+      imgBtn.addEventListener('click', e => {
+        const id = imgBtn.getAttribute('id');
+
+        const modalWrap = document.querySelector('.modal_wrap');
+        console.log(modalWrap);
+        modalWrap.classList.add('visible');
+
+      });
+    });
+
+  </script>
+  <% } %>

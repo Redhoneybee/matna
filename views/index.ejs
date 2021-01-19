@@ -6,27 +6,33 @@
     <%= title %>
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/global.css">
+  <link rel="stylesheet" href="/stylesheets/global.css" />
+  <link rel="stylesheet" href="/stylesheets/modal.css" />
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://kit.fontawesome.com/77b1e0e3f1.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
   <div class="container">
-    <%- include('header'); -%>
-      <script>
-      </script>
-      <section class="about">
-        <div class="list">
-          <ul class="grid">
-          </ul>
-        </div>
-        <% if(page=='main' ){ %>
-          <%- include('default_list'); -%>
-            <% }else if(page=='menu' ){ %>
-              <%- include('menu'); -%>
-                <% } %>
+    <% if(page=='menu' ){ %>
+      <%- include('menu_modal') %>
+        <% } %>
+          <%- include('header'); -%>
+            <script>
+            </script>
+            <section class="about">
+              <div class="list">
+                <ul class="grid">
+                </ul>
+              </div>
+              <% if(page=='main' ){ %>
+                <%- include('default_list'); -%>
+                  <% }else if(page=='menu' ){ %>
+                    <%- include('menu'); -%>
+                      <% } %>
 
-      </section>
+            </section>
   </div>
 </body>
 <script type="text/javascript" src="/javascripts/index.js"></script>

@@ -34,6 +34,48 @@ body {
 ol, ul {
 	list-style: none;
 }
+textarea {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textarea;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    padding: 2px;
+}
+button{
+	-webkit-writing-mode : horizontal-tb !important;
+	text-rendering : auto;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform : none;
+	text-indent : 0px;
+	text-shadow : none;
+	text-align : center;
+	cursor : default;
+	border : 0;
+}
+button:focus{
+	outline : 0;
+}
 blockquote, q {
 	quotes: none;
 }
@@ -54,9 +96,29 @@ table {
     align-items : center;
 }
 
+.flex_row{
+	display : flex;
+	flex-direction : row;
+}
+.flex_50{
+	box-sizing : border-box;
+	max-width : 50%;
+	flex : 1 1 50%;
+}
+.flex_80{
+	box-sizing : border-box;
+	max-width : 80%;
+	flex : 1 1 80%;
+}
+.flex_20{
+	box-sizing : border-box;
+	max-width : 20%;
+	flex : 1 1 20%;
+}
 .grid{
     display : grid;
     height : 300px;
     grid-template-columns: repeat(1, 1fr);
 	grid-gap : 40px;
 }
+

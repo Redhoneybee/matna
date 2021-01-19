@@ -1,0 +1,201 @@
+div.modal_wrap{
+  position : fixed;
+  width : 100%;
+  height : 100vh;
+  z-index : 50;
+  pointer-events : none;  
+}
+div.modal_wrap.visible{
+  pointer-events : initial;
+}
+div.modal_wrap .mask{
+  position : absolute;
+  top : 0;
+  left : 0;
+  width : 100%;
+  height : 100%;
+  background : rgba(0, 0, 0, 0.4);
+  opacity : 0;
+}
+div.modal_wrap.visible .mask{
+  display : block;
+  opacity : 1;
+}
+
+div.modal_wrap .modal{
+  position : relative;
+  background : #fff;
+  width : 100vw;
+  height : 100vh;
+  opacity : 0;
+  transform : scale(0.7);
+  -webkit-transform : scale(0.7);
+  transition : all 0.3s ease-in-out;
+  -webkit-transition : all 0.3s ease-in-out;
+}
+div.modal_wrap.visible .modal{
+  opacity : 1;
+  transform : scale(1);
+  -webkit-transition : scale(1);
+}
+
+ .modal_top{
+  width : 100%;
+  height : 3vh;
+  background : cornflowerblue;
+}
+
+ .modal_section{
+  width : 100%;
+}
+ .modal_section .food_info{
+  width : inherit;
+  margin : 30px 0;
+}
+ .modal_section .food_info .food_img img{
+  width : 85px;
+  height : 85px;
+}
+.modal_section .food_info .food_name{
+
+}
+.modal_section .food_info .food-rating{
+  
+}
+.modal_section .food_myScore{
+  padding : 20px 5px;
+}
+.modal_section .food_myScore img{
+  position : relative;
+  top : -10px;
+}
+.modal_section .food_myScore .food_eval{
+  position : relative;
+  top : -6px;
+  font-size : 30px;
+  text-align : center;
+}
+.modal_section .food_myScore .btn{
+  display : block;
+}
+.modal_section .wrap_comment{
+  padding-bottom : 20px;
+}
+.modal_section .wrap_comment .write_comment{
+  margin : 0 20px;
+}
+.write_comment .write_input{
+  border : 1px solid #d7d7d7;
+  overflow : hidden;
+  background : #fff;
+}
+.write_comment .write_input .id_bar{
+    padding : 0 16px;
+    font-size : 1.18rem;
+    width : 100%;
+    line-height : 40px;
+    overflow : hidden;
+    background : inherit;
+    border : inherit;
+  box-sizing : border-box;
+}
+.id_bar .id{
+  float : left;
+}
+.id_bar .string{
+  font-size: 12px;
+}
+.id_bar .string em{
+  font-style : normal;
+}
+.write_comment .write_input #cmt_cont{
+  display : block;
+  width : 100%;
+  box-sizing : border-box;
+  border : 0;
+  border-bottom : 1px solid #d7d7d7;
+  resize : none;
+  padding : 12px;
+  font-size : 1.18rem;
+  height : 115px;
+}
+.write_comment .write_input .btn_submit{
+  width : 100%;
+  background : cornflowerblue;
+  text-align : center;
+}
+.btn_submit span{
+  width : 100%;
+  font-size : 14px;
+  font-weight : bold;
+  line-height : 40px;
+}
+
+h3.sub_title{
+    padding : 16px 20px;
+    font-size : 16px;
+    font-weight : 600;
+}
+
+.modal_section .wrap_comment .list_comment{
+    padding : 0;
+    margin : 0;
+}
+
+.list_comment .comment_box{
+    padding : 15px 20px;
+    border-bottom : 1px solid #d7d7d7;
+}
+
+.comment_box .user_info .user_id{
+    font-size : 16px;
+    color : #000;
+    font-weight : 600;
+}
+.comment_box .user_info .user_date{
+    margin-left : 10px;
+    color : #444444;
+    font-size : 12px;
+}
+.comment_box .user_content{
+    position : relative;
+    overflow : hidden;
+}
+.comment_box .user_content .user_text{
+    padding : 10px;
+    font-size : 14px;
+    line-height : 16px;
+}
+
+.comment_box .user_btn{
+    position : relative;
+}
+.comment_box .user_btn .btn_replay{
+    height : 28px;
+    line-height : 23px;
+    font-size : 14px;
+    padding : 0 8px;
+    box-sizing : border-box;
+    border : 1px solid #d7d7d7;
+}
+.comment_box .user_btn .btn_like{
+    position : absolute;
+    right : 0;
+    bottom : 0;
+}
+.btn_like .like
+,.btn_like .hate{
+    background-color : none;
+    font-size : 14px;
+}
+
+.list_comment .wrap_btn_more{
+    margin : 20px 0;
+    padding : 0 20px;
+}
+.wrap_btn_more .btn_more{
+    width : 100%;
+    padding : 10px 0;
+    font-size : 14px;
+    border : 1px solid #e6e6e6;
+}
