@@ -88,6 +88,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.scroll_lock{
+	overflow : hidden;
+}
 
 .flex{
     display : flex;
@@ -122,3 +125,6 @@ table {
 	grid-gap : 40px;
 }
 
+.fa-star{
+	color : cornflowerblue;	
+}

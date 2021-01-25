@@ -10,13 +10,14 @@
                 <div class="food_desc flex flex_50">
                     <div class="food_name">이름 : </div>
                     <div class="food_storename">가게 명 : </div>
-                    <div class="food-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="food_rating">
+                        <i class="fa-star far"></i>
+                        <i class="fa-star far"></i>
+                        <i class="fa-star far"></i>
+                        <i class="fa-star far"></i>
+                        <i class="fa-star far"></i>
                     </div>
+                    <div class="rating_score"></div>
                 </div>
             </div>
             <div class="food_myScore">
@@ -24,11 +25,11 @@
                     <img src="/images/나의_점수는.png">
                 </div>
                 <div class="food_eval">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fa-star far" data-score="1"></i>
+                    <i class="fa-star far" data-score="2"></i>
+                    <i class="fa-star far" data-score="3"></i>
+                    <i class="fa-star far" data-score="4"></i>
+                    <i class="fa-star far" data-score="5"></i>
                 </div>
                 <div class="flex" style="top : 10px;">
                     <button class="btn">주기</button>
@@ -53,26 +54,7 @@
                 </div>
                 <div class="list_comment">
                     <ul>
-                        <li>
-                            <div class="comment_box">
-                                <div class="user_info">
-                                    <span class="user_name">테스터</span>
-                                    <span class="user_date">2021-09-19 14:17:21</span>
-                                </div>
-                                <div class="user_content">
-                                    <div class="user_text">
-                                        음식 존나 맛 없네
-                                    </div>
-                                </div>
-                                <div class="user_btn">
-                                    <button type="button" class="btn_reply">답글</button>
-                                    <div class="btn_like">
-                                        <button type="button" class="far fa-thumbs-up like"> 0</button>
-                                        <button type="button" class="far fa-thumbs-down hate"> 0</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+
                     </ul>
                     <div class="wrap_btn_more">
                         <button type="button" class="btn_more">
@@ -86,3 +68,76 @@
         </div>
     </div>
 </div>
+<script>
+    const drawStar = (target, callback) => {
+        target.forEach(e => {
+            callback(e);
+        });
+    };
+    const scoreEvent = (event) => {
+        const target = event.target;
+        const score = parseInt(target.getAttribute('data-score'));
+        drawStar(document.querySelectorAll('.food_eval i'), e => {
+            e.classList.remove('far');
+            e.classList.remove('fas');
+            e.classList.add('far');
+        });
+        drawStar(document.querySelectorAll(`.food_eval i:nth-of-type(-n + ${score})`), e => {
+            e.classList.remove('far');
+            e.classList.add('fas');
+        });
+    }
+
+    const drawModal = async () => {
+        await common.fetchComments();
+
+        const foodName = document.querySelector('.food_name');
+        const foodStore = document.querySelector('.food_storename');
+
+        const commentList = document.querySelector('.list_comment ul');
+        foodName.innerHTML = '<div class="fn_title">이름</div>' + `<div class="fn">${common.choose.name}</div>`
+        foodStore.innerHTML = '<div class="sn_title">가게 명</div>' + `<div class="sn">${common.choose.store}</div>`;
+
+        // rating
+
+        const rating = document.querySelector('.food_rating');
+        const divScore = (common.choose.score.totalscore / common.choose.score.countscore).toFixed(1);
+        const intScore = parseInt(divScore[0]);
+
+        // give score to food
+        document.querySelectorAll('.food_eval i').forEach(e => {
+            e.addEventListener('click', scoreEvent);
+        });
+
+        drawStar(rating.querySelectorAll(`i:nth-of-type(-n+${intScore})`), e => {
+            e.classList.remove('far');
+            e.classList.add('fas');
+        });
+        document.querySelector('.rating_score').innerHTML = `(${divScore})`;
+        // comments
+        commentList.innerHTML = "";
+        common.choose.comments.forEach(e => {
+            const query = `<li>
+                            <div class="comment_box">
+                                <div class="user_info">
+                                    <span class="user_name">${e.username}</span>
+                                    <span class="user_date">${e.createdate}</span>
+                                </div>
+                                <div class="user_content">
+                                    <div class="user_text">
+                                        ${e.contents}
+                                    </div>
+                                </div>
+                                <div class="user_btn">
+                                    <button type="button" class="btn_reply">답글</button>
+                                    <div class="btn_like">
+                                        <button type="button" class="far fa-thumbs-up like"> ${e.like}</button>
+                                        <button type="button" class="far fa-thumbs-down hate"> ${e.like}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>`;
+            commentList.innerHTML += query;
+        });
+    }
+</script>
